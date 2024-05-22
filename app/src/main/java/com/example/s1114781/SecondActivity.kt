@@ -1,12 +1,10 @@
 package com.example.s1114781
 
-import android.content.Intent
+import android.app.Activity
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,7 +13,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
@@ -23,15 +20,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.s1114781.ui.theme.S1114781Theme
 
-class MainActivity : ComponentActivity() {
+class SecondActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             S1114781Theme {
                 // A surface container using the 'background' color from the theme
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting1("Android")
-                    FirstScreen()
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Greeting2("Android")
                 }
             }
         }
@@ -39,15 +38,9 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-    )
-}
-
-@Composable
-fun Greeting1(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+    val activity = (context as Activity)
     Column {
         Row {
             Image(
@@ -55,54 +48,27 @@ fun Greeting1(name: String, modifier: Modifier = Modifier) {
                 contentDescription = "圖片"
             )
         }
-        Text(
-            text = "簡介",
-            color = Color.Blue,
-            modifier = modifier
-        )
+
         Text(
             text = "主要機構",
             color = Color.Red,
             modifier = modifier
         )
-    }
-}
-
-@Composable
-fun FirstScreen(modifier: Modifier = Modifier){
-    val context = LocalContext.current
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .background(Color.White)
-    )
-    {
-        Row {
-            Image(
-                painter = painterResource(id = R.drawable.maria),
-                contentDescription = "圖片"
-            )
-        }
-        Text(
-            text = "簡介",
-            color = Color.Blue,
-            modifier = modifier
-        )
-        Button(onClick = {
-            var it = Intent(context, SecondActivity::class.java)
-            context.startActivity(it)
-        })
+        Button(
+            onClick = {
+                activity.finish()
+            })
         {
-            Text(text = "主要機構")
+            Text(text = "簡介")
         }
+
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview2() {
     S1114781Theme {
-        Greeting("Android")
+        Greeting2("Android")
     }
 }
