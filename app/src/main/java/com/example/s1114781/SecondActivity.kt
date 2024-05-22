@@ -48,20 +48,31 @@ fun Greeting2(name: String, modifier: Modifier = Modifier) {
                 contentDescription = "圖片"
             )
         }
-
         Text(
-            text = "主要機構",
-            color = Color.Red,
+            text = "關於App作者",
+            color = Color.Blue,
             modifier = modifier
         )
+        Row {
+            Image(
+                painter = painterResource(id = R.drawable.mypic),
+                contentDescription = "圖片"
+            )
+        }
+        Button(
+            onClick = {
+                activity.finish()
+            })
+        {
+            Text(text = "服務總攬")
+        }/*
         Button(
             onClick = {
                 activity.finish()
             })
         {
             Text(text = "簡介")
-        }
-
+        }*/
     }
 }
 

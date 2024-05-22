@@ -15,6 +15,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -49,6 +53,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun FirstScreen(modifier: Modifier = Modifier){
     val context = LocalContext.current
+    var appear by remember { mutableStateOf(true) }
     Column(modifier = Modifier
         .fillMaxSize()
         .background(Color.White)
@@ -61,19 +66,31 @@ fun FirstScreen(modifier: Modifier = Modifier){
             )
         }
         Text(
-            text = "簡介",
+            text = "瑪利亞基金會服務總覽",
             color = Color.Blue,
             modifier = modifier
         )
-        Button(onClick = {
+        Row {
+            Image(
+                painter = painterResource(id = R.drawable.service),
+                contentDescription = "圖片"
+            )
+        }
+        Button(onClick = {var it = Intent(context, SecondActivity::class.java)
+                context.startActivity(it)
+            })
+            {
+                Text(text = "作者：資工二B 黃子芸")
+            }
+        }
+        /*Button(onClick = {
             var it = Intent(context, SecondActivity::class.java)
             context.startActivity(it)
         })
         {
             Text(text = "主要機構")
-        }
+        }*/
     }
-}
 
 
 
