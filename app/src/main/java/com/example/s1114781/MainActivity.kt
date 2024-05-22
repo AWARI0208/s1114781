@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
             S1114781Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting1("Android")
+                    //Greeting1("Android")
                     FirstScreen()
                 }
             }
@@ -44,28 +44,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
             text = "Hello $name!",
             modifier = modifier
     )
-}
-
-@Composable
-fun Greeting1(name: String, modifier: Modifier = Modifier) {
-    Column {
-        Row {
-            Image(
-                painter = painterResource(id = R.drawable.maria),
-                contentDescription = "圖片"
-            )
-        }
-        Text(
-            text = "簡介",
-            color = Color.Blue,
-            modifier = modifier
-        )
-        Text(
-            text = "主要機構",
-            color = Color.Red,
-            modifier = modifier
-        )
-    }
 }
 
 @Composable
